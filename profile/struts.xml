@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- constants -->
+	<constant name="struts.action.extension" value=","/>
+	<constant name="struts.action.excludePattern" value="/websocket/.*" />
+	<constant name="struts.convention.package.locators" value="web"/>
+	<constant name="struts.convention.action.suffix" value="Controller"/>
+	<constant name="struts.convention.action.mapAllMatches" value="true"/>
+	<constant name="struts.convention.default.parent.package" value="rest-default"/>
+	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory"/>
+	<constant name="struts.multipart.maxSize" value="10000000" />
+	
+	<!-- package -->
+	<package name="mainten-default" extends="rest-default">
+		<!-- 注意内部子标签顺序有要求，否则项目启动报错 -->
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+	
+		<interceptors>
+			<interceptor name="mainLogin" class="com.zdtx.ifms.common.web.interceptors.LoginInterceptor" />
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+		</interceptors>
+		
+		<global-results>          
+	        <result name="error">/WEB-INF/content/error-500.jsp</result>
+    	</global-results>
+    	
+    	<global-exception-mappings>
+    		<exception-mapping result="error" exception="java.lang.Exception" />
+    	</global-exception-mappings>
+    	
+	</package>
+</struts>

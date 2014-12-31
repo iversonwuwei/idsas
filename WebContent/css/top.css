@@ -1,0 +1,16 @@
+/* CSS Document */
+
+body{font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px;}
+*{margin:0px; padding:0px;}
+
+.top{width:100%; height:62px; background:#2383c0;}
+.top ul{}
+.top li{float:right; list-style:none; display:block; height:18px; margin-top:6px; line-height:18px; width:90px;}
+.top li a, .top li a:link, .top li a:visited{width:80px; display:block;text-decoration:none; color:#fff;text-align:center; padding:1px;}
+.top li a:hover, .top li a:active{width:80px; display:block; text-decoration:none; color:#fff;text-align:center; padding:0px; border:solid 1px #7590a1; border-bottom:solid 1px #243945; border-right:solid 1px #243945;}
+
+.tools{width:100%; height:23px; background:url(../images/temp_04.jpg) repeat-x;}
+.tools ul{}
+.tools .t_l{margin-left:5px;width:300px; float:left; color:#003349;}
+.tools li{float:right; list-style:none;margin-top:2px; width:55px;}
+

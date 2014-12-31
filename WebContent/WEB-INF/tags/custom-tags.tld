@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+	<tlibversion>1.2</tlibversion>  
+    <jspversion>1.1</jspversion>  
+    <shortname>custom</shortname>
+	<!-- 以下标签均做无重复注释 -->
+	<!-- <%@ taglib prefix="u" uri="/common/util_tags.tld"%> -->
+	<!-- tld文件对应方法中,若<bodycontent>内容为空,则标签格式:<c:hide/> 反之<c:hide></c:hide> -->
+	<!-- 隐藏域 (仅仅是套在input外,将其隐藏,没啥大用处,简化了一点点代码而已,如果需要,可以添加div标签的支持) -->
+	<tag>
+		<name>hide</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Hidden</tagclass>
+		<bodycontent>JSP</bodycontent>
+	</tag>
+	<!-- 新增按钮 -->
+	<tag>
+		<name>add</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Add</tagclass>
+		<bodycontent>empty</bodycontent>
+		<!-- attribute:标签体内的属性 -->
+		<attribute>
+			<!-- 属性名称 -->
+			<name>path</name>
+			<!-- 是否为必须填写 -->
+			<required>true</required>
+			<!-- 是否可以使用EL表达式 -->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>method</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 编辑按钮(一般情况我们都用edit方法,所以这里我没添加method参数) -->
+	<tag>
+		<name>edit</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Edit</tagclass>
+		<bodycontent>empty</bodycontent>
+		<!-- attribute:标签体内的属性 -->
+		<attribute>
+			<!-- 属性名称 -->
+			<name>path</name>
+			<!-- 是否为必须填写 -->
+			<required>true</required>
+			<!-- 是否可以使用EL表达式 -->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>method</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 导出excel按钮(一般情况我们都用excel方法 -->
+	<tag>
+		<name>excel</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Excel</tagclass>
+		<bodycontent>empty</bodycontent>
+		<!-- attribute:标签体内的属性 -->
+		<attribute>
+			<name>method</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 打印PDF按钮(一般情况我们都用excel方法 -->
+	<tag>
+		<name>print</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Print</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>path</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	
+	<!-- 删除 (由于每个人在后台用的删除方法名不同,所以这里的method参数需要传入你调用的方法) -->
+	<tag>
+		<name>del</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Delete</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>path</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>method</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>jsmethod</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 查看(由于每个人在后台用的查看方法名不同,所以这里的method参数需要传入你调用的方法) -->
+	<tag>
+		<name>show</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Show</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>path</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>method</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 保存按钮(onclick属性输入javascript方法名) -->
+	<tag>
+		<name>save</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Save</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>onclick</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 返回按钮(返回模块主页) -->
+	<tag>
+		<name>home</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Home</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>path</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 用JS返回,以避免返回后N多参数丢失 -->
+	<tag>
+		<name>back</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Back</tagclass>
+		<bodycontent>empty</bodycontent>
+	</tag>
+	
+	<!-- 搜索按钮，点击触发自定义JS方法 -->
+	<tag>
+		<name>search</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Search</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>onclick</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 排序表头 -->
+	<tag>
+		<name>sort</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Sort</tagclass>
+		<body-content>JSP</body-content>
+		<!-- 传入的PAGE对象(非必填) -->
+		<attribute>
+			<name>page</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<!-- 表字段名(非必填) -->
+		<attribute>
+			<name>property</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<!-- 是否中文排序(非必填) -->
+		<attribute>
+			<name>chinese</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<!-- 宽度(非必填) -->
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<!-- 是否开头或结尾(非必填) -->
+		<attribute>
+			<name>side</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<!-- 行合并(非必填) -->
+		<attribute>
+			<name>rowspan</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<!-- 列合并(非必填) -->
+		<attribute>
+			<name>colspan</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 日期选择-->
+	<tag>
+		<name>date</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Date</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>dateName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>dateValue</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>future</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<!-- 日期格式 -->
+			<name>dateFmt</name>
+			<!-- 非必填 -->
+			<required>false</required>
+			<!-- 可以用JSP表达式 -->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<!-- 是否显示周 -->
+			<name>isShowWeek</name>
+			<!-- 非必填 -->
+			<required>false</required>
+			<!-- 可以用JSP表达式 -->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 时间段选择，起始时间小于等于终止时间 -->
+	<tag>
+		<name>doubleDate</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_DoubleDate</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>beginName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>endName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>beginValue</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>endValue</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>future</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<!-- 月选择-->
+	<tag>
+		<name>monthDate</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_MonthDate</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>dateName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>dateValue</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 月时间段选择，起始时间小于等于终止时间 -->
+	<tag>
+		<name>monthDoubleDate</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_MonthDoubleDate</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>beginName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>endName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>beginValue</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>endValue</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>future</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<!-- 金钱表示方法，小数点保留两位，默认是.00 -->
+	<tag>
+		<name>doubleCl</name>
+		<tagclass>com.zdtx.ifms.utils.tags.Tag_Double</tagclass>
+		<bodycontent>JSP</bodycontent>
+	</tag>
+
+	<!-- 导航区 -->
+	<tag>
+		<name>navigation</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Navigation</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>father</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>model</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>operate</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>addPath</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>addMethod</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>excelMethod</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>printPath</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>saveMethod</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>homePath</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 搜索区 -->
+	<tag>
+		<name>searchBody</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_SearchBody</tagclass>
+		<bodycontent>jsp</bodycontent>
+		<attribute>
+			<name>row</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 搜索内容 -->
+	<tag>
+		<name>searchItem</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_SearchItem</tagclass>
+		<bodycontent>jsp</bodycontent>
+		<attribute>
+			<name>title</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>side</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 主页面表格 -->
+	<tag>
+		<name>table</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Table</tagclass>
+		<bodycontent>jsp</bodycontent>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 主页面表格头 -->
+	<tag>
+		<name>tableHeader</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_TableHeader</tagclass>
+		<bodycontent>jsp</bodycontent>
+		<attribute>
+			<name>operate</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>row</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 主页面表格体 -->
+	<tag>
+		<name>tableBody</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_TableBody</tagclass>
+		<bodycontent>jsp</bodycontent>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>page</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>index</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 主页面表格体元素 -->
+	<tag>
+		<name>tableItem</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_TableItem</tagclass>
+		<bodycontent>jsp</bodycontent>
+		<attribute>
+			<name>list</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 格式化时间（秒数-》XX:XX:XX） -->
+	<tag>
+		<name>formatTime</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_FormatTime</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 选择部门 -->
+	<tag>
+		<name>selCom</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_SelCom</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 选择车队 -->
+	<tag>
+		<name>selTeam</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_SelTeam</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 选择线路 -->
+	<tag>
+		<name>selLine</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_SelLine</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 选择plate number -->
+	<tag>
+		<name>selVeh</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_SelVeh</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 选择vehicle name -->
+	<tag>
+		<name>selVehName</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_SelVehName</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	
+	<!-- 选择司机 -->
+	<tag>
+		<name>selDriver</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_SelDriver</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	<!-- select标签 -->
+	<tag>
+		<name>select</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_Select</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<!-- Name -->
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<!-- 非必填默认选中 -->
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<!-- 非必填Id -->
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<!-- KeyAndValueList，要用正则表达式 -->
+			<name>list</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	<!-- ip camera标签 -->
+	<tag>
+		<name>ipCamWin</name>
+		<tagclass>com.zdtx.ifms.common.utils.tags.Tag_IpCamWin</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>username</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>password</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>ip</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>vehicleID</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>deviceID</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

@@ -1,0 +1,98 @@
+/* CSS Document */
+
+body{font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px;}
+*{margin:0px; padding:0px;}
+.main{width:100%;overflow-y:auto; overflow-x:auto; }
+.main a, .main a:link, .main a:visited{color:#000; text-decoration:none;}
+.main a:hover, .main a:active{color:#3A6474; text-decoration:underline;}
+
+.main table{border-bottom:solid 1px #d4dde7;border-top:solid 1px #d4dde7;border-collapse:collapse; width:100%;}
+.main .user{width:90%; height:500px;}
+.main .user ul{margin:20px; text-align:left;}
+.main .user li{list-style:none; margin-top:5px; }
+/* .main td{border-top:solid 1px #d4dde7;border-right:solid 1px #d4dde7; height:22px;empty-cells:show;} */
+.main .main_tit{background:url(../images/main_tbg.gif) repeat-x #EEEEEE; height:23px; font-weight:bolder;}
+.main .hour{width:100%; border:none;}
+.main .hour td{border-top:solid 1px #d4dde7;border-right:solid 1px #d4dde7; height:20px;empty-cells:show;}
+.main .button_input input{border:solid 1px #7191B3; background:url(../images/temp_43.gif); height:20px; width:80px; font-size:12px;cursor:hand;}
+.FixedCol
+{   z-index:666; 
+    position: relative; 
+    left: expression(this.offsetParent.scrollLeft);
+    font-weight:bold;
+	
+}  
+
+/* 所辖线路管理--开始 */
+.sxxlgj{width:360px; height:500px; border:solid 1px #8599AD; float:left; margin:20px; padding:10px; overflow:auto;}
+.sxxlgj input{ vertical-align:middle;}
+.sxxlgj li{ width:110px; list-style:none; float:left; height:25px;}
+
+
+/* 所辖线路管理--结束 */
+
+/* 冻结行 */
+.zhzd td{border-left:solid 1px #d4dde7; border-bottom:solid 1px #d4dde7;height:22px;}
+.fixedrow
+{ 
+  z-index:666; 
+  position: relative; 
+  top: expression(this.offsetParent.scrollTop); 
+
+} 
+.FixedRowBorder
+{ 
+  position: relative; 
+  top: expression(this.offsetParent.scrollTop); 
+  border-width:1px;
+  border-color:#d4dde7;
+  border-style:solid;
+}
+
+/* 冻结表表头 */
+.Reprot_Head{font-size:12px; background:url(../images/maintable_title.gif) repeat-x #efefef; color:#000; height:23px; text-align:center; font-weight:bolder;font-family:Verdana, Arial, Helvetica, sans-serif;}
+.Reprot_HeadP{border-left:solid 1px #d4dde7;border-top:solid 1px #d4dde7; font-size:12px;height:23px; background-image:url(../images/gv_head_bg.gif); float:left;font-family:Verdana, Arial, Helvetica, sans-serif;color:#566917; text-align:center; font-weight:bolder; font-family:Verdana, Arial, Helvetica, sans-serif;}
+/* 冻结表主体 */
+.Reprot_td{font-size:12px;height:22px; text-align:center;  empty-cells:show;}
+.Reprot_tdP{font-size:12px;border-left:solid 1px #d4dde7;border-bottom:solid 1px #d4dde7; height:30px; text-align:center;float:left;empty-cells:show;}
+.Reprot_td .gs input{width:80px; height:18px; border:solid 1px #84BE5A; background:url(../images/input_bg_h.jpg) #ffffff repeat-x; text-align:right; font-family:Verdana, Arial, Helvetica, sans-serif;}
+
+
+
+.text_bg{margin-left:10px; background: url(../images/biao_t_bg.gif) repeat-x #efefef; text-align:right;height:22px; color:#000;} 
+.text_bg_c{background: url(../images/biao_t_bg.gif) repeat-x #efefef; text-align:center; height:22px; color:#000;} 
+.text_c{text-align:center; height:20px;}
+.text_bg_t{ background:url(../images/biao_t_bg_s.gif) repeat-x #CDDDF0; text-align:center; height:22px; font-size:14px; font-weight:bolder; color:#000;}
+.redtext{color:#CC0000;}
+.greentext{color:#006600;}
+.bluetext{color:#003399;}
+.red_background{background:#FF0000;}
+
+
+
+.box{width:98%; float:left; margin-left:10px; margin-top:10px; }
+.box_title{ float:left; padding:1px 5px; margin-left:-95%; background:#fff;}
+.box_center{width:98%; float:left; border:1px solid #88a3c2;padding:7px;margin-top:10px;}
+.main .box_center table{border:solid 1px #d4dde7; border-bottom:solid 1px #cccccc; border-right:solid 1px #cccccc;width:100%;}
+.main .box_center td{border-bottom:solid 1px #d4dde7; background:#ffffff; border-right:solid 1px #d4dde7; height:21px;}
+
+
+.zhuye2{width:1352px; height:251px; z-index:1000; position:absolute; top:370px; left:0; background:#fff;}
+.zhuye2 .zy_n{width:610px; height:220px; margin-left:10px; margin-top:10px; float:left;}
+.zhuye2 .zy_n li{list-style:none; height:25px;}
+
+
+.dhk{position:absolute;
+	left:373px;
+	top:40px;
+	width:261px;
+	height:217px;
+	z-index:2001;}
+
+.dhktop{width:261px; background:url(../images/pop_03.gif) no-repeat; height:10px;}
+.dhkcenter{width:261px; background:url(../images/pop_05.gif) repeat-y; height:200px;}
+.dhkcenter_n{width:251px; margin-left:5px;}
+.dhkbottom{width:261px; background:url(../images/pop_07.gif); height:49px;}
+
+
+

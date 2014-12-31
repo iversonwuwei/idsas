@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+		    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		    http://www.springframework.org/schema/tx
+		    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		    http://www.springframework.org/schema/aop
+		    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+			http://www.springframework.org/schema/context
+		    http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+		default-autowire="byName">
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+	<!-- dbcp dataSource -->
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxIdle" value="${database.maxIdle}"/>
+		<property name="maxActive" value="${database.maxActive}"/>
+		<property name="maxWait" value="${database.maxWait}"/>
+		<property name="maxOpenPreparedStatements" value="${database.maxOpenPreparedStatements}"/>
+	</bean> -->
+
+	<!-- c3p0 dataSource -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driverClassName}" />
+        <property name="jdbcUrl" value="${jdbc.url}" />
+        <property name="user" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- 连接池保留最小连接数 -->
+        <property name="minPoolSize" value="${database.minPoolSize}" />
+        <!-- 连接池保留最大连接数 Default: 15 -->
+        <property name="maxPoolSize" value="${database.maxPoolSize}" />
+        <!-- 初始化时创建的连接数 Default: 3 -->
+        <property name="initialPoolSize" value="${database.initialPoolSize}" />
+        <!-- 最大空闲时间，超过空闲时间的连接将被丢弃 若为0则永不丢弃。Default: 0 -->
+        <property name="maxIdleTime" value="${database.maxIdleTime}" />
+        <!-- 连接数用完时每次新建连接数 Default: 3 -->
+        <property name="acquireIncrement" value="${database.acquireIncrement}" />
+        <!-- c3p0是异步操作的，缓慢的JDBC操作通过帮助进程完成 Default: 3-->
+        <property name="numHelperThreads" value="${database.numHelperThreads}" />
+        <!-- 用以控制数据源内加载的PreparedStatement数量 Default: 0 -->
+        <property name="maxStatements" value="${database.maxStatements}" />
+        <!-- 隔多少秒检查所有连接池中的空闲连接 Default: 0 -->
+        <property name="idleConnectionTestPeriod" value="${database.idleConnectionTestPeriod}" />
+        <!-- 从数据库获取新连接失败后重复尝试获取的次数 Default: 30 -->
+        <property name="acquireRetryAttempts" value="${database.acquireRetryAttempts}" />
+        <!-- 连接池内单个连接所拥有的最大缓存Statement数 -->
+        <property name="maxStatementsPerConnection" value="${database.maxStatementsPerConnection}"/>
+		<!-- 设置连接被checkout后，经过多长时间还未返还连接池，则连接缓冲池直接Kill该连接  -->
+        <property name="unreturnedConnectionTimeout" value="${database.unreturnedConnectionTimeout}"/>
+    </bean>
+
+	<!-- <context:annotation-config/> -->
+	<context:component-scan base-package="com.zdtx.ifms.*.service"/>
+	<context:component-scan base-package="com.zdtx.ifms.*.dao"/>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="namingStrategy">
+			<bean class="org.hibernate.cfg.ImprovedNamingStrategy" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.use_sql_comments">${hibernate.use_sql_comments}</prop>
+				<prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
+				<prop key="hibernate.jdbc.fetch_size">${hibernate.jdbc.fetch_size}</prop>
+				<!-- 开启二级缓存 --> 
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+				<!-- 强制Hibernate以更人性化的格式将数据存入二级缓存 -->  
+				<prop key="hibernate.cache.use_structured_entries">${hibernate.cache.use_structured_entries}</prop>
+				<!-- 开启查询缓存 -->
+				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+				<!-- 高速缓存提供程序 -->
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<!-- 指定缓存配置文件位置 -->  
+				<prop key="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</prop>
+				<!-- Hibernate将收集有助于性能调节的统计数据 -->  
+				<prop key="hibernate.generate_statistics">${hibernate.generate_statistics}</prop>
+			</props>
+		</property>
+		<property name="packagesToScan" value="com.zdtx.ifms.*.model" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<!-- use cglib proxy -->
+	<!-- <aop:config proxy-target-class="true" />
+	<bean id="logAspect" class="com.zdtx.web.LogAspect"></bean>
+	<aop:config>
+ 		<aop:aspect id="myAspect" ref="logAspect">
+			<aop:pointcut id="logPointCut" expression="execution(* com.zdtx.ifms.dao.*.*save(..)) || execution(* com.zdtx.ifms.dao.*.*delete(..))" />
+			<aop:before method="logAll" pointcut-ref="logPointCut"/>
+		</aop:aspect>
+	</aop:config> -->
+	</beans>

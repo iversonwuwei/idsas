@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="idsas:Web exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/idsas_Web_exploded</output-path>
+    <root id="archive" name="idsas_Web exploded.war">
+      <element id="javaee-facet-resources" facet="idsas/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="idsas" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

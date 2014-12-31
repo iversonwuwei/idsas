@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fop version="1.0">
+	<base>.</base>
+	<source-resolution>72</source-resolution>
+	<target-resolution>72</target-resolution>
+	<default-page-settings height="29.7cm" width="21.0cm"/>
+	<renderers>
+		<renderer mime="application/pdf">
+			<filterList>
+				<value>flate</value>
+			</filterList>
+			<fonts>
+				<auto-detect/><!-- 自动扫描系统自带字体 -->
+			</fonts>
+		</renderer>
+	</renderers>
+</fop>

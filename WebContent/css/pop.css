@@ -1,0 +1,204 @@
+@charset "utf-8";
+/* CSS Document */
+
+#pop {
+	width: 60%;
+	height: 380px;
+	border: solid 5px #2383c0;
+	border-top: solid 5px #2383c0;
+	position: absolute;
+	top: 200px;
+	left: 26%;
+	background: #fff;
+	z-index: 2000;
+	visibility: hidden;
+}
+
+.poptitle {
+	width: 100%;
+	height: 28px;
+	background: url(../images/pop_title.jpg) repeat-x;
+}
+
+.poptitle li {
+	font-size: 16px;
+	font-family: "微软雅黑";
+	line-height:28px;
+	float: left;
+	list-style: none;
+	font-weight: bolder;
+}
+
+.popmain {
+	font-size: 14px;
+	line-height: 25px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	overflow-y: auto;
+}
+
+.popmain table{border-bottom: solid 1px #C1CDDB; border-left: solid 1px #C1CDDB; border-collapse:collapse; width: 100%;}
+.popmain td{border-top: solid 1px #dddddd; border-right: solid 1px #dddddd; empty-cells: show; text-align: left; white-space: nowrap;}
+.popmain .title{background: #e8f0f5; text-align: right;}/* font-weight: bolder;  */
+.popmain input[type="text"]{width: 120px; border: solid 1px #a2b3bd; font-size:14px; height:17px;}
+.popmain input[type="checkbox"]{border: 0;}
+.popmain input[type="radio"]{border: 0;}
+.popmain select{width: 122px; border: solid 1px #a2b3bd; font-size:12px; height:20px;}
+.popmain textarea{border: solid 1px #a2b3bd; font-size:14px; width: 100%; height: 64px;}
+
+.popmain .input_date input {
+	background: url(../images/data.png) no-repeat #ffffff;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 3px;
+	width: 117px;
+}
+
+/** Use to long time**/
+.popmain .input_date_i input {
+	background: url(../images/data.png) no-repeat #ffffff;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 3px;
+	width: 150px;
+	font-size:14px; 
+	height:17px;
+}
+
+.popmain .input_date_l input {
+	background: url(../images/data.png) no-repeat #ffffff;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 3px;
+	width: 90px;
+	border-right: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.popmain .input_date_r input {
+	background: url(../images/input_arrow_bg.gif) no-repeat #ffffff;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 3px;
+	width: 90px;
+	border-left: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/** phone **/
+.popmain .input_phone input {
+	background: url(../images/led-icons/mobile_phone.png) no-repeat #ffffff;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 3px;
+	width: 107px;
+}
+
+/** email **/
+.popmain .input_email input {
+	background: url(../images/mimi-icons/icon_email.gif) no-repeat #ffffff;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 3px;
+	width: 210px;
+	position: relative;
+}
+
+.popmain .input_money input {
+	background: url(../images/input_money.gif) no-repeat #ffffff;
+	vertical-align: middle;
+	text-align: right;
+	padding-right: 3px;
+	width: 107px;
+}
+
+/* CSS 选项卡 */
+.tab_title {
+	width: 100%;
+	height: 33px;
+	clear: both;
+	background: url(../images/xxk_title_bg.gif);
+	padding-top: 7px;
+}
+
+.tab_title ul {
+	margin: 0px;
+	padding: 0 5px;
+}
+
+.tab_title li {
+	list-style: none;
+	float: left;
+	text-align: center;
+	height: 26px;
+}
+
+.sd01 {
+	cursor: pointer;
+	background: url(../images/xxk_title_sd01bg.gif) repeat-x;
+	font-weight: bolder;
+	padding-top: 5px;
+	width: 80px;
+}
+
+.sd02 {
+	cursor: pointer;
+	background: url(../images/xxk_title_sd02bg.gif) repeat-x;
+	padding-top: 5px;
+	width: 80px;
+}
+
+.sdbg {
+	background: url(../images/xxk_title_sdbg.gif);
+	width: 1px;
+}
+
+.hidden {
+	display: none;
+}
+
+.tab_body {
+	width: 100%;
+	height: 90%;
+	clear: both;
+	overflow-y: auto;
+}
+
+/* CSS 锟斤拷锟斤拷 */
+.pop_box {
+	width: 100%;
+	float: left;
+	margin-top: 10px;
+}
+
+.pop_box_title {
+	float: left;
+	margin-left: -95%;
+	background: #f9f9f9;
+	padding: 1px 5px;
+	color: #214362;
+	font-weight: bold;
+}
+
+.pop_box_center {
+	width: 100%;
+	float: left;
+	border-top: 1px dotted #214362;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	padding-top: 20px;
+	margin-top: 10px;
+	overflow: auto;
+}
+
+.redtext {
+	color: #CC0000;
+}
+
+.greentext {
+	color: #006600;
+}
+
+.bluetext {
+	color: #003399;
+}

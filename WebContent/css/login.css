@@ -1,0 +1,27 @@
+body{margin:0; padding:0; font-size:9pt; background:url(../images/login_bg.JPG) repeat-x; }
+img{border:0;}
+#bg{width:100%; min-height:600px;background:url(../images/login.jpg) no-repeat}
+/* #login{margin:auto; width:982px; height:368px; top:160px;left:12%; position:absolute;} */
+#login{width:982px; height:368px; top:40%;left:50%;position: absolute;margin-left:-491px;margin-top:-184px;}
+
+#top_top_left{width:677px; height:74px; float:left;}
+#top_top_right{width:243px; height:74px; float:left;}
+
+
+#top_left{width:677px; height:74px; float:left;}
+#top_left img {margin-left:3px; margin-top:13px;}
+#top_center{width:243px; height:74px; background:url(../images/login_05.gif); float:left;}
+
+#center_left{width:677px; height:203px; background:url(../images/login_09.jpg) no-repeat; float:left;}
+#center_middle{width:243px; height:203px; float:left; background:url(../images/login_10.jpg) no-repeat;}
+#center_right{width:62px; height:203px; float:right; background:url(../images/login_11.jpg) no-repeat;}
+
+#down_left{width:677px; height:89px; float:left;}
+#down_center{width:243px; height:106px; background:url(../images/login_16.jpg); float:left;}
+#inf{width:677px; height:32px; background:url(../images/login_18.jpg) no-repeat; }
+.inf_text{display:block; width:100px; height:20px; font-size:16px; font-weight:bolder; color:#fff; margin-left:67px; margin-top:12px; float:left;}
+.copyright{display:block; float:left; margin-left:150px; margin-top:10px; color:#525252; font-family:Arial, Helvetica, sans-serif}
+
+#user{ margin-left:86px; margin-top:17px; height:30px;}
+input{width:132px; height:28px; border:none; background:#eef3f8; font-size:9pt; line-height:28px;}
+#btn{margin-left:20px; margin-top:40px;height:25px; margin-right:20px; text-align:center; }

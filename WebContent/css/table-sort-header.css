@@ -1,0 +1,43 @@
+/* NORMAL */
+/* DEFAULT */
+.tableSortHeader0 {
+	/*z-index:666; 
+	position: relative; 
+	top: expression(this.offsetParent.scrollTop);*/
+}
+
+/* ASC */
+.tableSortHeader1 {
+	/*z-index:666; 
+	position: relative; 
+	top: expression(this.offsetParent.scrollTop);*/
+	background: url("../images/arrow_d.gif") no-repeat right #2383C0;
+	padding-right: 16px;
+}
+
+/* DESC */
+.tableSortHeader2 {
+	/*z-index:666; 
+	position: relative; 
+	top: expression(this.offsetParent.scrollTop);*/
+	background: url("../images/arrow_u.gif") no-repeat right #2383C0;
+	padding-right: 16px;
+}
+
+/* REVERSE */
+/* DEFAULT */
+.tableSortHeaderReverse0 {
+	
+}
+
+/* ASC */
+.tableSortHeaderReverse1 {
+	background: url("../images/arrow_d.gif") no-repeat right;
+	padding-right: 16px;
+}
+
+/* DESC */
+.tableSortHeaderReverse2 {
+	background: url("../images/arrow_u.gif") no-repeat right;
+	padding-right: 16px;
+}

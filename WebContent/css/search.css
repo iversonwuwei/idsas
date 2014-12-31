@@ -1,0 +1,25 @@
+/* CSS Document */
+
+body{font-size:12px; font-family:Verdana, Arial, Helvetica, sans-serif;}
+*{margin:0px; padding:0px;}
+.search{width:100%; background:url(../images/temp_39.gif) repeat-x; height:35px;}
+.search_g{padding-top:10px;}
+.search_g table{width:830px; }
+.search_g td{font-size:12px; padding:1px; height:20px;white-space: nowrap;}
+
+.search_g input{border:solid 1px #A9C7CF; width:100px; background:url(../images/input_bg.gif) repeat-x #ffffff;font-size:12px; height:18px; }
+.search_g select{border:solid 1px #A9C7CF;width:100px;  background:url(../images/input_bg.gif) repeat-x #ffffff;font-size:12px; height:18px;}
+.search_g .button_input input{border:solid 1px #7191B3; background:url(../images/temp_43.gif); height:20px; width:80px; font-size:12px;cursor:pointer;}
+.search_g .text_right{text-align:right;}
+.search_g img{border: 0;}
+
+.search_g .input_date input{background:url(../images/input_date_bg.gif) no-repeat #ffffff; text-align:right; padding-right:3px; width:97px;}
+.search_g .input_hour input{background:url(../images/input_hour_bg.gif) no-repeat #ffffff; text-align:right; padding-right:3px; width:97px;}
+.search_g .input_date_l input{background:url(../images/input_date_bg.gif) no-repeat #ffffff; text-align:right; padding-right:3px; width:90px; border-right:none; font-family:Arial, Helvetica, sans-serif;}
+.search_g .input_date_c input{background:#ffffff; text-align:right; padding-right:3px; width:90px; border-right:none; font-family:Arial, Helvetica, sans-serif;}
+.search_g .input_date_r input{background:url(../images/input_arrow_bg.gif) no-repeat #ffffff; text-align:right; padding-right:3px; width:90px; border-left:none; font-family:Arial, Helvetica, sans-serif;}
+.search_g .input_k input{border-right:none;text-align:right;}
+.search_g .input_kr input{border-left:none;background:url(../images/input_arrow_bg.gif) no-repeat #ffffff; text-align:right;}
+.search_g .input_gx input{width:15px; border:none;}
+
+.table_title{width:100%; height:32px; font-size:16px; color:#FFFFFF; font-weight:bolder; background:url(../images/table_title_bg.gif) #6b95be right no-repeat;}

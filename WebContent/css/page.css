@@ -1,0 +1,6 @@
+/* ·­Ò³ */
+
+.page{width:100%; height:25px; text-align:right; padding-top:5px;}
+.page .page_n{margin-right:20px;}
+.page .page_n input{width:40px; height:15px; border:solid 1px #7191B3; background:url(../images/temp_43.gif); color:#474747; font-size:12px;cursor:pointer;}
+.page .page_n .text input{background:#FFFFFF; width:25px; cursor:text;}

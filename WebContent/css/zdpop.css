@@ -1,0 +1,73 @@
+/* CSS Document */
+
+body{font-size:12px; font-family:Verdana, Arial, Helvetica, sans-serif;scrollbar-face-color:#C9DAEE;
+scrollbar-highlight-color:#FFFFFF;
+scrollbar-3dlight-color:#C6D8F0;
+scrollbar-darkshadow-color:#C6D8F0;
+scrollbar-shadow-color:#93A8B7;
+scrollbar-arrow-color:#385F83;
+scrollbar-track-color:#E6ECF5;}
+*{margin:0px; padding:0px;font-family:Verdana, Arial, Helvetica, sans-serif;}
+
+.pop_bg{width:100%; background:url(../images/pop_bg.gif) no-repeat; margin:auto; clear:both; padding-top:31px;}
+.pop_tools{width:100%; height:28px; background:url(../images/pop_13.gif) repeat-x; margin:auto;}
+.pop_tools li{float:left; margin-left:7px; margin-top:2px;  list-style:none;}
+.pop_tools li a, .pop_main_tools li a:link, .pop_main_tools li a:visited{display:block; text-decoration:none; color:#000000; padding:3px;}
+.pop_tools li a:hover, .pop_main_tools li a:active{display:block; text-decoration:none; color:#000000; padding:2px; border:solid 1px #E9F0F9; border-bottom:solid 1px #8599AD; border-right:solid 1px #8599AD; background:#D8E5F2;}
+.pop_tools li span{margin-left:3px;}
+
+.pop_one{width:100%;overflow-y:auto;overflow-x:hidden;margin:auto;}
+.pop_main{width:100%;overflow-y:auto;overflow-x:hidden;margin:auto;}
+.pop_main table{width:100%; background:#FFFFFF;border-top:solid 1px #C0C9CF;}
+.pop_main td{padding:1px; border-bottom:solid 1px #C0C9CF; border-right:solid 1px #C0C9CF;}
+.pop_main .gx input{width:15px;vertical-align:middle; border:none;}
+.pop_main .button_input input{border:solid 1px #7191B3; background:url(../images/temp_43.gif); height:20px; width:60px; font-size:12px;cursor:pointer;}
+.pop_main input[type="text"]{border:solid 1px #CFD8E3; height:18px;vertical-align:middle; background:url(../images/input_bg.gif) repeat-x #ffffff; width:180px; font-size:12px;}
+.pop_main select{width:180px; font-size:12px;vertical-align:middle;}
+.pop_main textarea{width:90%;height:40px;background:url(../images/input_bg.gif) repeat-x #ffffff;border:solid 1px #CFD8E3; font-size:12px;vertical-align:middle;}
+.pop_main .input_hour input{background:url(../images/input_hour_bg.gif) no-repeat #ffffff; vertical-align:middle;text-align:right; padding-right:3px; }
+.pop_main .input_date input{background:url(../images/input_date_bg.gif) no-repeat #ffffff; vertical-align:middle;text-align:right; padding-right:3px; }
+.pop_main .input_date_l input{background:url(../images/input_date_bg.gif) no-repeat #ffffff;vertical-align:middle; text-align:right; padding-right:3px; width:90px; border-right:none; font-family:Arial, Helvetica, sans-serif;}
+.pop_main .input_date_r input{background:url(../images/input_arrow_bg.gif) no-repeat #ffffff;vertical-align:middle; text-align:right; padding-right:3px; width:90px; border-left:none; font-family:Arial, Helvetica, sans-serif;}
+.pop_main .input_hui input{background:#eee; border:solid 1px #ccc;vertical-align:middle;}
+.pop_main .input_money input{background:url(../images/input_money.gif) no-repeat #ffffff;vertical-align:middle; text-align:right; padding-right:3px; }
+.pop_one li{
+	float:left;
+	list-style:none ;
+	width:24.5%;
+	height:100%;
+	border-right:solid 1px #000;
+	border-bottom:solid 1px #000; 
+}
+.pop_one ul{
+	height:24.3%;
+}
+
+.text_bg{ background:url(../images/biao_t_bg.gif) repeat-x #efefef; text-align:right;height:22px;} /* ���ֱ���ɫ */
+.text_bg_c{background:url(../images/biao_t_bg.gif) repeat-x #efefef; text-align:center; height:22px;} 
+.text_c{text-align:center;}
+
+
+
+
+/* CSS ѡ� */
+.xxk_tit {width:100%; height:33px; clear:both; background:url(../images/xxk_title_bg.gif); padding-top:7px;}
+.xxk_tit ul{margin:0px; padding:0 5px;}
+.xxk_tit li{list-style:none; float:left; text-align:center;height:26px;}
+.sd01{cursor:pointer;background:url(../images/xxk_title_sd01bg.gif) repeat-x;font-weight:bolder; padding-top:5px;width:80px; }
+.sd02{cursor:pointer;background:url(../images/xxk_title_sd02bg.gif) repeat-x;padding-top:5px;width:80px; }
+.sdbg{background:url(../images/xxk_title_sdbg.gif); width:1px;}
+.hidden{display:none;}
+.bor03{width:100%; clear:both;}
+
+
+
+/* CSS ���� */
+.pop_box{width:100%; float:left; margin-top:10px;}
+.pop_box_title{ float:left;margin-left:-95%; background:#f9f9f9; padding:1px 5px; color:#214362; font-weight:bold; }
+.pop_box_center{width:100%; float:left; border-top:1px dotted #214362;font-family:Verdana, Arial, Helvetica, sans-serif; padding-top:20px;margin-top:10px;}
+
+
+.redtext{color:#CC0000;}
+.greentext{color:#006600;}
+.bluetext{color:#003399;}

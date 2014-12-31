@@ -1,0 +1,61 @@
+body {
+	font-size: 12px;
+}
+
+pre {
+	background-color: #eee;
+	width: 80%;
+	display: none;
+}
+
+.tree {
+	background-color: #eee;
+	height: 300px;
+	width: 80%;
+	font-size: 13px;
+	overflow: auto;
+}
+
+.btnn {
+	background: url("../images/button_bg.jpg") repeat scroll 0 0 #EEEEEE;
+	border: medium none;
+	cursor: pointer;
+	font-size: 12px;
+	height: 22px;
+	text-align: center;
+	width: 80px;
+}
+.btn_long{
+	background: url("../images/btn_bg.gif") repeat scroll 0 0 transparent;
+    border: 1px solid #7191B3;
+    cursor: pointer;
+    font-size: 12px;
+    height: 22px;
+    width: 120px;
+}
+b{
+	color: green;
+	font-weight: normal;
+}
+a{
+	color: #000000;
+	text-decoration: none;
+}
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:active {
+	color: #3A6474;
+	text-decoration: underline;
+}
+.main{
+	overflow: auto;
+	margin-left: 50px;
+}
+.divs {
+	width: 450px;
+	height: 300px;
+	border: 1px solid #A4BED4;
+}

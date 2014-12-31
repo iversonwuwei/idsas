@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<source>
+	<title>
+		FOP Sample
+	</title>
+	<paragraph1>
+		测试
+	</paragraph1>
+	<paragraph2>
+		abc
+	</paragraph2>
+	<paragraph3>
+		中文123
+	</paragraph3>
+	<paragraph4>
+		123
+	</paragraph4>
+</source>
