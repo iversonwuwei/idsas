@@ -3,7 +3,9 @@
  * Copyright(c) 2010, Wiflg Goth. All rights reserved.
  */
 package com.zdtx.ifms.common.utils;
-
+/**
+*责分页功能 - 新架构中不包含在java中 由javascript 负责实现。
+*/
 import java.util.Collections;
 import java.util.List;
 

@@ -1,8 +1,7 @@
 package com.zdtx.ifms.common.dao;
 
-import java.io.Serializable;
-import java.util.List;
-
+import com.zdtx.ifms.common.utils.OrderByChinese;
+import com.zdtx.ifms.common.utils.Page;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -14,9 +13,11 @@ import org.hibernate.impl.CriteriaImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.zdtx.ifms.common.utils.OrderByChinese;
-import com.zdtx.ifms.common.utils.Page;
-
+import java.io.Serializable;
+import java.util.List;
+/**
+ * 新架构中废弃掉
+ * */
 /**
  * 通用类
  * hibernate 帮助类

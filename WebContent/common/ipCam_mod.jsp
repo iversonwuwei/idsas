@@ -54,6 +54,9 @@
 	</body>
 </c:if>
 <c:if test="${param.playerType == '2'}">
+	<script language="JavaScript">
+		alert(${param.camType});
+	</script>
 	<c:if test="${param.camType == 1}">
 		<body onbeforeunload="Disconnect();" style="background-color: #000000; width: 100%; height: 100%;">
 			<object id="${param.id}"
@@ -163,11 +166,33 @@
 	</c:if>
 	<c:if test="${param.camType == null || param.camType == 2}">
 		<body style="background-color: #000000; width: 100%; height: 100%;">
-			<object style="height: 95%; width: 100%; top: 0;" id="${param.id}" classid="CLSID:70EDCF63-CA7E-4812-8528-DA1EA2FD53B6" codeBase="<%=basePath%>cabs/VitaminCtrl_4.0.0.13.cab#version=4,0,0,13" standby="Loading plug-in..." style="width: 730px; height: 510px;">
+		alert(${param.ip})
+			<!--<object style="height: 95%; width: 100%; top: 0;" id="${param.id}" classid="CLSID:70EDCF63-CA7E-4812-8528-DA1EA2FD53B6" codeBase="<%=basePath%>cabs/VitaminCtrl_4.0.0.13.cab#version=4,0,0,13" standby="Loading plug-in..." style="width: 730px; height: 510px;">
 				<PARAM name="Url" value="rtsp://${param.ip}:${param.port}/live.sdp"/>
 				<PARAM NAME="UserName" VALUE="${param.username}">
 				<PARAM NAME="Password" VALUE="${param.password}">
-			</object>
+			</object>-->
+		<object style="height: 95%; width: 100%; top: 0;" id="${param.id}" classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab" standby="Loading plug -in ...">
+			<param name="mrl" value="rtsp://rtsp://203.117.57.131:41781/live.sdp">
+			<param name="username" value="${param.username}"/>
+			<param name="password" value="${param.password}"/>
+			<param name="autostart" value="true" />
+			<param name="allowfullscreen" value="false" />
+			<param name="autoplay" value="true"/>
+			<param name='loop' value='false' />
+			<param name='controls' value='true' />
+			<param name="volume" value="40"/>
+		</object>
+		<!--<object type='application/x-vlc-plugin' pluginspage="http://www.videolan.org/" id='vlc' events='false' width="720" height="410">
+			<param name='mrl' value='rtsp://${param.ip}:${param.port}/live.sdp' />
+			<param name="username" value="${param.username}"/>
+			<param name="password" value="${param.password}"/>
+			<param name='volume' value='50' />
+			<param name='autoplay' value='true' />
+			<param name='loop' value='false' />
+			<param name='fullscreen' value='false' />
+			<param name='controls' value='false' />
+		</object>-->
 		</body>
 	</c:if>
 </c:if>

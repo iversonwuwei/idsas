@@ -1,12 +1,5 @@
 package com.zdtx.ifms.specific.web.monitor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.zdtx.ifms.common.utils.KeyAndValue;
 import com.zdtx.ifms.common.utils.Struts2Util;
 import com.zdtx.ifms.common.utils.Utils;
@@ -19,6 +12,12 @@ import com.zdtx.ifms.specific.service.system.PoiConfManager;
 import com.zdtx.ifms.specific.service.vehicle.PoliceManager;
 import com.zdtx.ifms.specific.vo.monitor.CamDeviceVO;
 import com.zdtx.ifms.specific.vo.monitor.TargetVO;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RealTimeNewController extends URLSupport<Object> {
 
@@ -57,7 +56,7 @@ public class RealTimeNewController extends URLSupport<Object> {
 		String fleetStr = Utils.keysToString(baseMgr
 				.getFleetByAuthority(getCurrentUser().getUserID()));
 		targetList = policeMgr.getTargets(fleetStr);
-		return "index";
+        return "index";
 	}
 
 	public String vehip() {

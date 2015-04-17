@@ -370,8 +370,8 @@ function getCamTime(camID, camIP) {
 	    async : true,
 	    dataType : 'json',
 	    data : {
-	    	'vo.camIP' : camIP
-		},
+	    	'vo.camIP' : camIP,
+	    },
 	    url : basePath + "monitor/ip-cam!getCamTime",
 	    success : function(d) {
 			if(d.camTime != null) {
@@ -410,8 +410,8 @@ function getCamTimes() {
 	    async : true,
 	    dataType : 'json',
 	    data : {
-	    	'vo.camIP' : camInfos
-		},
+	    	'vo.camIP' : camInfos,
+	    },
 	    url : basePath + "monitor/ip-cam!getCamTimes",
 	    success : function(d) {
 			if(d.camTimes != null) {

@@ -4,6 +4,11 @@
 package com.zdtx.ifms.common.utils;
 
 /**
+ * 不是很清楚为什么要定义这个类 - 是否是List或者Map 不满足需求？
+ */
+
+
+/**
  * @author Administrator
  * 
  */

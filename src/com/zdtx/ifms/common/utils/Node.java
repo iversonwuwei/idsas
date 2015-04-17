@@ -1,5 +1,7 @@
 package com.zdtx.ifms.common.utils;
-
+/**
+ * 在现有项目中没有引用-基本废弃。
+ */
 /**
  * Ztree用Node节点类
  * 

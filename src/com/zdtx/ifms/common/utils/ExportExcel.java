@@ -23,6 +23,10 @@ import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+/**
+ * 抽象高阶定义 - 不同实现
+ * */
+
 
 /**
  *

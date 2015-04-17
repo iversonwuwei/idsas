@@ -4,7 +4,9 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
-
+/**
+ * 暂时保留
+ * */
 /**
  * 通用类
  * 抽象POJO，业务POJO继承此类，省写toString、equals、hashCode方法

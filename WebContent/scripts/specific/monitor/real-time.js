@@ -11,7 +11,7 @@ var policeArr = new Array();	//policeArr[Police名称] = 设备名称
 var selectedTarget = 'all';						//被选中的显示对象
 var iconSize = new OpenLayers.Size(36, 36);
 var iconOffset = new OpenLayers.Pixel(-(iconSize.w / 2), -(iconSize.h / 2));
-
+var isOnline = false;
 var route_style = {
 		strokeColor: "#339933",
 	    strokeOpacity: 1,
@@ -54,6 +54,17 @@ function addRoute(lon, lat) {
 	routeLayer.removeAllFeatures();	//清除之前轨迹数据
 	var point = new OpenLayers.Geometry.Point(lon, lat).transform(fromProjection, toProjection);
 	pointArr.push(point);	//保存轨迹点集合
+	var lineFeature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.LineString(pointArr), null, route_style);	//轨迹对象
+	routeLayer.addFeatures(lineFeature);
+}
+//Added by Walden in order to filter the data which is over 5 mins
+function addRouteIn5mins(lon, lat, duration){
+	routeLayer.removeAllFeatures();
+	var point = new OpenLayers.Geometry.Point(lon, lat).transform(fromProjection, toProjection);
+	pointArr.push(point);
+	if(duration > 5){
+		pointArr = [];
+	}
 	var lineFeature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.LineString(pointArr), null, route_style);	//轨迹对象
 	routeLayer.addFeatures(lineFeature);
 }

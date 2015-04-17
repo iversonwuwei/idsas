@@ -1,9 +1,11 @@
 package com.zdtx.ifms.common.service;
 
-import java.io.InputStream;
-import java.util.List;
-import java.util.Map;
-
+import com.zdtx.ifms.common.dao.BaseDao;
+import com.zdtx.ifms.common.utils.KeyAndValue;
+import com.zdtx.ifms.common.utils.Struts2Util;
+import com.zdtx.ifms.common.utils.Utils;
+import com.zdtx.ifms.specific.model.authority.Feat;
+import com.zdtx.ifms.specific.model.authority.User;
 import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 import org.hibernate.criterion.DetachedCriteria;
@@ -11,12 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.zdtx.ifms.common.dao.BaseDao;
-import com.zdtx.ifms.common.utils.KeyAndValue;
-import com.zdtx.ifms.common.utils.Struts2Util;
-import com.zdtx.ifms.common.utils.Utils;
-import com.zdtx.ifms.specific.model.authority.Feat;
-import com.zdtx.ifms.specific.model.authority.User;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Map;
+/**
+ * 通用服务提供者 - 新架构定义高阶接口根据不同的服务具体实现。
+ * */
+
 
 /**
  * 通用类
@@ -132,7 +135,6 @@ public class BaseManager {
 			return false;
 		}
 	}
-	
 	/**
 	 * get companys by authority
 	 * @return List<KeyAndValue>

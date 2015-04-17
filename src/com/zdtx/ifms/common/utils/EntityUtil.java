@@ -1,13 +1,16 @@
 package com.zdtx.ifms.common.utils;
 
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+/**
+ * 帮助类 - 所有的帮助类需要定义通用接口 根据不同的需求 不同的实现
+ * */
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
 
 /**
  * @ClassName: EntityUtils

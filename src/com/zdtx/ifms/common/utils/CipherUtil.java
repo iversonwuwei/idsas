@@ -1,8 +1,12 @@
 package com.zdtx.ifms.common.utils;
 
-import java.security.MessageDigest;
-
 import org.apache.tomcat.util.codec.binary.Base64;
+
+import java.security.MessageDigest;
+/**
+ * 加密类 - 定义高阶接口
+ * */
+
 
 /**
  * @ClassName: CipherUtil

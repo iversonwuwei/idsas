@@ -31,16 +31,16 @@ import com.zdtx.ifms.specific.service.monitor.SocketManager;
  * @since 2014-9-3 13:41:17
  */
 @SuppressWarnings("deprecation")
-@WebServlet(name = "realtime", urlPatterns="/websocket/realtime_old", loadOnStartup = 5)
+@WebServlet(name = "realtime", urlPatterns="/websocket/realtime_old", loadOnStartup = -1)
 public class RealtimeWsServerOld extends WebSocketServlet {
-	
+
 	private static final long serialVersionUID = -4196119292352244908L;
 
 	private static final Logger LOGGER = Logger.getLogger(RealtimeWsServerOld.class);
 
 	@Autowired
 	private SocketManager socketManager;
-	
+
 	protected static final Set<RealtimeWsInbound> clients = new CopyOnWriteArraySet<RealtimeWsInbound>();
 
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-ddhh:mm:dd");
@@ -51,7 +51,10 @@ public class RealtimeWsServerOld extends WebSocketServlet {
 	String fencingStr = SocketUtil.getFenceStr(SocketUtil.SOCKET_GPS_NAME);// 订阅围栏信息
 	InputStream inputStream = null;
 	OutputStream outputStream = null;
-	
+	SocketCreat socketCreat = null;
+
+	private int reConnectCount=0;
+
 	@Override
 	protected StreamInbound createWebSocketInbound(String str, HttpServletRequest request) {
 		return new RealtimeWsInbound();
@@ -61,11 +64,11 @@ public class RealtimeWsServerOld extends WebSocketServlet {
 	public void init() throws ServletException {	//加载方法
 		super.init();
 		if (SocketUtil.SOCKET_GPS_ISOPEN.trim().equals("true")) {
-			System.out.println("RealtimeWsServer6: start up automatic!");
+			//System.out.println("RealtimeWsServer6: start up automatic!");
 			creatSocket();
 		}
 	}
-	
+
 	/**
 	 * 创建新socket连接，并保持长连接
 	 */
@@ -83,7 +86,7 @@ public class RealtimeWsServerOld extends WebSocketServlet {
 			while (true) {
 				try {
 					if ((System.currentTimeMillis() - lastSendTime) / 1000f > SocketUtil.SOCKET_LOGIN_TIMEOUT) {	//验证超时（暂定20秒）
-						System.out.println("First connect time out, close socket!");
+						LOGGER.error("yup:First connect time out, close socket!");
 						running = false;
 						socket.close();	//超时则关闭socket
 						socket = null;
@@ -93,12 +96,12 @@ public class RealtimeWsServerOld extends WebSocketServlet {
 						String answerStr = SocketUtil.getStringByInputStream(inputStream);	//获取应答
 						if (SocketUtil.checkHeadAndTail(answerStr)) {	//验证格式是否合法
 							if (SocketUtil.checkLogin(answerStr)) {
-								System.out.println("Login succeed!");
+								LOGGER.error("yup:socket connect succeed!");
 								running = true;
 								new Thread(new KeepAliveWatchDog()).start();
 								new Thread(new ReceiveWatchDog()).start();
 							} else {
-								System.out.println("Login failed, close socket!");
+								//System.out.println("Login failed, close socket!");
 								running = false;
 								socket.close();	//登陆失败关闭socket
 								socket = null;
@@ -106,14 +109,16 @@ public class RealtimeWsServerOld extends WebSocketServlet {
 							break;
 						}
 					} else {
-						Thread.sleep(100);	//心跳频率
+						Thread.sleep(1000);	//心跳频率 yup 100改为1000
 					}
 				} catch (Exception e) {
+
 					e.printStackTrace();
 					break;
 				}
 			}
 		} catch (Exception e) {
+			LOGGER.error("yup:the socket connect Exception",e);
 			try {
 				if(socket != null) {
 					socket.close();
@@ -124,54 +129,92 @@ public class RealtimeWsServerOld extends WebSocketServlet {
 			}
 		}
 	}
-	
+
+	class SocketCreat extends Thread {
+
+		@Override
+		public void run() {
+			super.run();
+			while (!running) {
+				try {
+					Thread.sleep(120000l);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				LOGGER.error("yup:the socket reConnect begin,count:"+reConnectCount);
+				if (socket == null) {
+					creatSocket();
+				} else {
+					try {
+						outputStream = socket.getOutputStream();
+						outputStream.write(SocketUtil.LOGIN_STRING.getBytes());
+						outputStream.flush();
+					} catch (Exception e) {
+						creatSocket();
+					}
+				}
+				reConnectCount++;
+				try {
+					Thread.sleep(60000l);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+	}
+
+
 	/**
-	 * @description 保持socket长连接心跳监听线程
+	 * @description 保持socket长连接心跳监听线程  yup加入重连机制
 	 * @author Liu Jun
 	 * @since 2014年8月8日 上午9:53:56
 	 */
 	class KeepAliveWatchDog implements Runnable {
-        long checkDelay = 100;	//等待时间
-        long keepAliveDelay = 3000;  //心跳频率
-        long keepAliveLastSendTime = System.currentTimeMillis();
+		long checkDelay = 100;	//等待时间
+		long keepAliveDelay = 3000;  //心跳频率
+		long keepAliveLastSendTime = System.currentTimeMillis();
 		public void run() {
-			System.out.println("Start to keepAliveDelay6");
+			//System.out.println("Start to keepAliveDelay6");
 			while (running) {
-                if(System.currentTimeMillis() - keepAliveLastSendTime > keepAliveDelay) {
-                    try {
-                    	outputStream.write(fencingStr.getBytes());// 给socket服务器发送订阅信息
-                    	outputStream.flush();
-                    	keepAliveLastSendTime = System.currentTimeMillis();
-                    } catch (IOException e) {
-                    	running = false;
-                        try {
-                        	socket.close();		//心跳失败关闭socket
-                        } catch (IOException e1) {
-                        }
-                        socket = null;
-                        System.out.println("Keep alive failed, close socket!");
-                        e.printStackTrace();
-                    }
-                } else {
-                    try {
-                        Thread.sleep(checkDelay);	//Sleep失败关闭socket
-                    } catch (InterruptedException e) {
-                    	running = false;
-                        try {
-                        	if(socket != null) {
-                        		socket.close();		//登陆失败关闭socket
-                        	}
-                        } catch (IOException e1) {
-                        }
-                        socket = null;
-                        System.out.println("Sleep failed, close socket!");
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
-	
+				if(System.currentTimeMillis() - keepAliveLastSendTime > keepAliveDelay) {
+					try {
+						outputStream.write(fencingStr.getBytes());// 给socket服务器发送订阅信息
+						outputStream.flush();
+						keepAliveLastSendTime = System.currentTimeMillis();
+					} catch (IOException e) {
+						running = false;
+						try {
+							socket.close();		//心跳失败关闭socket
+						} catch (IOException e1) {
+						}
+						socket = null;
+						System.out.println("Keep alive failed, close socket!");
+						e.printStackTrace();
+					}
+				} else {
+					try {
+						Thread.sleep(checkDelay);	//Sleep失败关闭socket
+					} catch (InterruptedException e) {
+						running = false;
+						try {
+							if(socket != null) {
+								socket.close();		//登陆失败关闭socket
+							}
+						} catch (IOException e1) {
+						}
+						socket = null;
+						System.out.println("Sleep failed, close socket!");
+						e.printStackTrace();
+					}
+				}
+			}
+
+			if(!running){
+				new Thread(new SocketCreat()).start();
+			}
+		}
+	}
+
 	/**
 	 * @description 应答监听线程
 	 * @author Liu Jun
@@ -179,7 +222,7 @@ public class RealtimeWsServerOld extends WebSocketServlet {
 	 */
 	class ReceiveWatchDog implements Runnable {
 		public void run() {
-			System.out.println("Start to ReceiveWatchDog6");
+			//System.out.println("Start to ReceiveWatchDog6");
 			while (running) {
 				try {
 					if (inputStream.available() > 0) {
@@ -239,20 +282,20 @@ public class RealtimeWsServerOld extends WebSocketServlet {
 					}
 				} catch (Exception e) {
 					running = false;
-					 try {
-						 if(socket != null) {
-                     		socket.close();		//处理实时数据失败关闭socket
-                     	}
-                     } catch (IOException e1) {
-                     }
-                     socket = null;
-                     System.out.println("Process data failed, close socket!");
-                     e.printStackTrace();
+					try {
+						if(socket != null) {
+							socket.close();		//处理实时数据失败关闭socket
+						}
+					} catch (IOException e1) {
+					}
+					socket = null;
+					System.out.println("Process data failed, close socket!");
+					e.printStackTrace();
 				}
 			}
 		}
 	}
-	
+
 	/**
 	 * 发送定位数据
 	 * @param gpsArr
@@ -273,7 +316,7 @@ public class RealtimeWsServerOld extends WebSocketServlet {
 			message = "gpsData," + dataArray[3] + ","
 					+ (6227.2995 / 60) + "," + (79.7982 / 60) + ","
 					+ dataArray[29] + "," + dataArray[2] + ","
-					 + dataArray[21] + "," + dataArray[8] + ","
+					+ dataArray[21] + "," + dataArray[8] + ","
 					+ angle + "," + DateUtil.formatLongTimeDate(new Date());
 		} else {
 			message = "gpsData," + dataArray[3] + ","
@@ -322,7 +365,7 @@ public class RealtimeWsServerOld extends WebSocketServlet {
 			}
 		}
 	}
-	
+
 	/***
 	 * 发送报警数据
 	 * @param dataArray[] {车辆/单兵名称, 报警类型, 经度, 纬度, 时间, 报警值}

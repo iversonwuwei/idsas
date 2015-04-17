@@ -2,6 +2,10 @@
  * 
  */
 package com.zdtx.ifms.common.utils;
+/**
+ * 同理 - KeyAndValue类 不是很明白
+ */
+
 
 /**
  * @author Administrator

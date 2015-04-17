@@ -9,13 +9,15 @@
  * @Copyright 2011
  */
 package com.zdtx.ifms.common.utils;
-
-import java.io.Serializable;
-
+/**
+ * 排序功能- 新架构中由通用接口代替，根据不同的要求具体实现
+ */
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.criterion.CriteriaQuery;
 import org.hibernate.criterion.Order;
+
+import java.io.Serializable;
 
 /**
  * 注掉部分为多种中文方式

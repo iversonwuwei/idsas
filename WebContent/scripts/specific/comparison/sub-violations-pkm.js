@@ -114,7 +114,7 @@ function doSearch() {
 					bars: {
 						show: true,
 						fill: 1,
-						barWidth: 0.1
+						barWidth: 0.1,
 					}
 				},
 				xaxes: [

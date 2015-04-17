@@ -1,8 +1,7 @@
 package com.zdtx.ifms.common.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.zdtx.ifms.common.utils.KeyAndValue;
+import com.zdtx.ifms.common.utils.KeyAndValues;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -10,8 +9,10 @@ import org.hibernate.transform.Transformers;
 import org.hibernate.type.StringType;
 import org.springframework.stereotype.Repository;
 
-import com.zdtx.ifms.common.utils.KeyAndValue;
-import com.zdtx.ifms.common.utils.KeyAndValues;
+import java.util.ArrayList;
+import java.util.List;
+/**
+ * 数据提取类- 新架构直接从Solr数据中心取得*/
 
 /**
  * 通用类

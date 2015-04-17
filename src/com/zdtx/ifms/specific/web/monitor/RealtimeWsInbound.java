@@ -1,11 +1,11 @@
 package com.zdtx.ifms.specific.web.monitor;
 
+import org.apache.catalina.websocket.MessageInbound;
+import org.apache.catalina.websocket.WsOutbound;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
-
-import org.apache.catalina.websocket.MessageInbound;
-import org.apache.catalina.websocket.WsOutbound;
 
 /**
  * @description 新实时定位数据websocket Inbound对象(Java 6)
@@ -34,4 +34,6 @@ public class RealtimeWsInbound extends MessageInbound {
 		RealtimeWsServerOld.clients.remove(this);
 		super.onClose(status);
 	}
+
+
 }

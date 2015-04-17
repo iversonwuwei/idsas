@@ -8,6 +8,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * 控制Tree的打开和关闭 - 新架构中利用javascript实现
+ **/
+
+/**
  * 
  * @author Wiflg Goth
  * @since May 9, 2011
